@@ -1,7 +1,5 @@
 class Course:
-    list = []
-    list2 = []
-    list3 = []
+
     def __init__(self, name, unit, term):
         self.name = name
         self.unit = unit
@@ -9,31 +7,27 @@ class Course:
 
 
     def addCourse(self):
-        list = []
-        list2 = []
-        list3 = []
-        self.name = str(input("Enter the course name: "))
-        self.unit = int(input("Enter the number of units"))
-        self.term = input("Enter the term you are taking this course: ")
-        list.append(self.name)
-        list2.append(self.unit)
-        list3.append(self.term)
+        course_list = []
+        self.name = input("enter class name: ")
+        self.unit = int(input("Enter class units: "))
+        self.term = int(input("Enter the term for this class"))
+        course1 = Course(self.name, self.unit, self.term)
 
     def removeCourse(self):
+        course_list = course1
         remove = input("Enter the course name to drop: ")
-        if remove in list:
-            list.pop(self.name)
+        if remove in course_list:
+            course_list.pop(self.name, self.unit, self.term)
         else:
             print(self.name, " is not found in your course list.")
 
 
     def printlist (self):
-        print("Course", end="         ")
-        print("Unit", end="        ")
-        print("Term")
-        print(self.name)
-        print(self.unit)
-        print(self.term)
+        if len(course_list) == 0:
+            print("No classes inputted.")
+        else:
+            print("no")
+
 
     def insertionSort(lst):
         for i in range(1, len(lst)):
@@ -44,6 +38,9 @@ class Course:
             while k >= 0 and lst[k] > currentElement:
                 lst[k + 1] = lst[k]
                 k -= 1
+
+            # Insert the current element into lst[k + 1]
+            lst[k + 1] = currentElement
 
 
 def menu():
