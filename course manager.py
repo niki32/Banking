@@ -1,4 +1,4 @@
-course_list = []
+
 class Course:
 
     def __init__(self, name, unit, term):
@@ -17,9 +17,9 @@ class Course:
         return -1
 
     def addCourse(self):
-            self.name = str(input("Enter a new number: "))
-            self.unit = int(input("Enter class units: "))
-            self.term = (input("Enter the term for this class"))
+            name = str(input("Enter a new number: "))
+            unit = int(input("Enter class units: "))
+            term = (input("Enter the term for this class"))
             course_list.append(self.name, self.unit, self.term)
 
     def __lt__(self, other):
@@ -69,7 +69,7 @@ def menu():
 #program starts running
 loop = 1
 
-
+course_list = []
 
 while loop == 1:
     choice = menu()
@@ -79,11 +79,11 @@ while loop == 1:
         else:
             print("no")
     elif choice == 2:
-        Course.addCourse()
+        course_list.addCourse()
     elif choice ==3:
-        print("not ready yet")
+        course_list.removeCourse()
     elif choice == 4:
-        print("not ready yet")
+        course_list.insertionSort()
     elif choice == 5:
         print("not ready yet")
     elif choice == 6:
