@@ -1,13 +1,14 @@
-
+course_list = []
 class Course:
 
-    def __init__(self, name, unit, term):
+    def __init__(self, name, term):
         self.name = name
-        self.unit = unit
         self.term = term
 
+
     def __lt__(self, other):
-        return self.unit < other.unit
+        global unit
+        return unit < other.unit
 
     def search(course_name, lst):
         for i in range(0, len(lst)):
@@ -17,10 +18,12 @@ class Course:
         return -1
 
     def addCourse(self):
-            name = str(input("Enter a new number: "))
-            unit = int(input("Enter class units: "))
-            term = (input("Enter the term for this class"))
-            course_list.append(self.name, self.unit, self.term)
+        global unit
+        self.name = str(input("Enter course name: "))
+        self.unit = int(input("Enter class units: "))
+        term = (input("Enter the term for this class: "))
+        course1 = Course(self.name, self.term, unit)
+        return course_list.append(course1)
 
     def removeCourse(self):
         remove = input("Enter that course that you would like to remove: ")
@@ -35,7 +38,7 @@ class Course:
         print("Course", end="     ")
         print("Unit", end="     ")
         print("Term")
-        return self.name + str(self.unit) + str(self.term)
+        return self.name + str(unit) + str(self.term)
 
 
 def insertionSort(lst):
@@ -66,7 +69,7 @@ def menu():
 #program starts running
 loop = 1
 
-course_list = []
+
 Course1 = Course(" ", 0)
 
 while loop == 1:
@@ -75,7 +78,7 @@ while loop == 1:
         if len(course_list) == 0:
             print("No classes have been inputted.")
         else:
-            print("no")
+            Course1.printList()
     elif choice == 2:
         Course1.addCourse()
     elif choice ==3:
