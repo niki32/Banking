@@ -22,9 +22,6 @@ class Course:
             term = (input("Enter the term for this class"))
             course_list.append(self.name, self.unit, self.term)
 
-    def __lt__(self, other):
-        return self.unit < other.unit
-
     def removeCourse(self):
         remove = input("Enter that course that you would like to remove: ")
         index = search(remove, course_list)
@@ -70,6 +67,7 @@ def menu():
 loop = 1
 
 course_list = []
+Course1 = Course(" ", 0)
 
 while loop == 1:
     choice = menu()
@@ -79,11 +77,11 @@ while loop == 1:
         else:
             print("no")
     elif choice == 2:
-        course_list.addCourse()
+        Course1.addCourse()
     elif choice ==3:
-        course_list.removeCourse()
+        Course1.removeCourse()
     elif choice == 4:
-        course_list.insertionSort()
+        Course1.insertionSort()
     elif choice == 5:
         print("not ready yet")
     elif choice == 6:
