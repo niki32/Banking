@@ -9,6 +9,13 @@ class Course:
     def __lt__(self, other):
         return self.unit < other.unit
 
+    def search(course_name, lst):
+        for i in range(0, len(lst)):
+            if course_name == lst[i].name:
+                return i
+
+        return -1
+
     def addCourse(self):
             self.name = str(input("Enter a new number: "))
             self.unit = int(input("Enter class units: "))
@@ -62,7 +69,7 @@ def menu():
 #program starts running
 loop = 1
 
-x = Course("", 0)
+
 
 while loop == 1:
     choice = menu()
@@ -72,7 +79,7 @@ while loop == 1:
         else:
             print("no")
     elif choice == 2:
-        x.addCourse()
+        Course.addCourse()
     elif choice ==3:
         print("not ready yet")
     elif choice == 4:
