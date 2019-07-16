@@ -14,51 +14,46 @@ class Course:
         for i in range(0, len(lst)):
             if course_name == lst[i].name:
                 return i
-
         return -1
 
     def addCourse(self):
         self.name = str(input("Enter course name: "))
+        course_list.append(self.name)
         self.unit = int(input("Enter class units: "))
-        term = (input("Enter the term for this class: "))
-        course1 = Course(self.name, self.term, self.unit)
-        return course_list.append(course1)
+        course_list.append(self.unit)
+        self.term = (input("Enter the term for this class: "))
+        course_list.append(self.term)
 
     def removeCourse(self):
-        remove = input("Enter that course that you would like to remove: ")
-        index = search(remove, course_list)
-        if index > -1:
-            print("found, index = ", index)
-            # change(course_list[index], "New name")
+        removed = input("Enter that course that you would like to remove: ")
+        if removed in course_list:
+            course_list.remove(self.name)
+            course_list.remove(self.unit)
+            course_list.remove(self.term)
         else:
-            print("Not found")
+            print("This course does not exist.")
 
-    def printlist(self):
+
+    def printList(self):
         print("Course", end="     ")
         print("Unit", end="     ")
         print("Term")
-        return self.name + str(self.unit) + str(self.term)
+        for x in range(len(course_list)):
+            print(course_list[x], end = "      ")
 
-
-def insertionSort(lst):
-    for i in range(1, len(lst)):
-            # insert lst[i] into a sorted sublist lst[0..i-1] so that
-            #   lst[0..i] is sorted.
-        currentElement = lst[i]
-        k = i - 1
-        while k >= 0 and lst[k] > currentElement:
-            lst[k + 1] = lst[k]
-            k -= 1
-
-            # Insert the current element into lst[k + 1]
-            lst[k + 1] = currentElement
+        #return str(self.name) + str(self.unit) + str(self.term)
 
     def courseSort(self):
         course_list.sort()
-        print(course_list)
+        print("Course", end="     ")
+        print("Unit", end="     ")
+        print("Term")
+        for x in range(len(course_list)):
+            print(course_list[x], end="      ")
 
 
 def menu():
+    print(" ")
     print("Please choose 1 of the following options:")
     print("  1. List all courses")
     print("  2. Add a course")
@@ -72,7 +67,7 @@ def menu():
 #program starts running
 loop = 1
 
-Course1 = Course(" ", 0)
+Course1 = Course("", "", 0)
 
 while loop == 1:
     choice = menu()
@@ -86,7 +81,7 @@ while loop == 1:
     elif choice == 3:
         Course1.removeCourse()
     elif choice == 4:
-        insertionSort()
+        Course1.courseSort()
     elif choice == 5:
         print("not ready yet")
     elif choice == 6:
